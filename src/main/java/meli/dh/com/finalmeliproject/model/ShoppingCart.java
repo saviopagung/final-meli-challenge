@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.*;
+import org.hibernate.tool.schema.internal.exec.AbstractScriptTargetOutput;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,6 +18,7 @@ public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    private double totalValue;
 
     @ManyToOne
     @JoinColumn(name = "buyer_id")

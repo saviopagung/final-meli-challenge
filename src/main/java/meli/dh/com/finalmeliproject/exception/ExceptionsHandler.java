@@ -43,8 +43,8 @@ public class ExceptionsHandler {
                 , HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(AuthorizationExceptionImp.class)
-    public ResponseEntity<ExceptionDetails> handlerBadRequest(AuthorizationExceptionImp ex) {
+    @ExceptionHandler(UnauthorizedExceptionImp.class)
+    public ResponseEntity<ExceptionDetails> handlerBadRequest(UnauthorizedExceptionImp ex) {
         return new ResponseEntity<>(
                 ExceptionDetails.builder()
                         .title("Unauthorized :|")

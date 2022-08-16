@@ -1,9 +1,12 @@
 package meli.dh.com.finalmeliproject.controller;
 
 import com.sun.istack.Nullable;
+import meli.dh.com.finalmeliproject.dto.payment.CreditCardDTO;
 import meli.dh.com.finalmeliproject.dto.ProductBatchDTO;
 
 import meli.dh.com.finalmeliproject.dto.ProductsBatchFilter;
+import meli.dh.com.finalmeliproject.dto.payment.PixDTO;
+import meli.dh.com.finalmeliproject.dto.payment.ResponsePaymentDTO;
 import meli.dh.com.finalmeliproject.dto.shoppingCart.RequestShoppingCartDto;
 import meli.dh.com.finalmeliproject.dto.shoppingCart.ResponseShoppingCartDto;
 import meli.dh.com.finalmeliproject.model.Product;
@@ -82,9 +85,15 @@ public class ProductController {
         return ResponseEntity.ok().body(iShoppingCartService.findShoppingCartProductsById(id));
     }
 
-    @PutMapping("/orders")
-    public ResponseEntity<PurchaseOrder> editShoppingCart(@RequestParam long orderId) {
-        return new ResponseEntity<>(iShoppingCartService.editShoppingCart(orderId),
+    @PutMapping("/orders/pix")
+    public ResponseEntity<ResponsePaymentDTO> paymentPix(@RequestBody PixDTO pixDTO, @RequestParam long orderId) {
+        return new ResponseEntity<>(iShoppingCartService.paymentShoppingCart(pixDTO, orderId),
+                HttpStatus.CREATED);
+    }
+
+    @PutMapping("/orders/credit-card")
+    public ResponseEntity<ResponsePaymentDTO> paymentCreditCard(@RequestBody CreditCardDTO creditCardDTO, @RequestParam long orderId) {
+        return new ResponseEntity<>(iShoppingCartService.paymentShoppingCart(creditCardDTO, orderId),
                 HttpStatus.CREATED);
     }
 

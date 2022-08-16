@@ -1,5 +1,6 @@
 package meli.dh.com.finalmeliproject.service.shoppingCart;
 
+import meli.dh.com.finalmeliproject.dto.payment.CreditCardDTO;
 import meli.dh.com.finalmeliproject.dto.shoppingCart.ResponseShoppingCartDto;
 import meli.dh.com.finalmeliproject.exception.BadRequestExceptionImp;
 import meli.dh.com.finalmeliproject.mocks.GeneratePurchaseOrderDTO;
@@ -167,7 +168,7 @@ class ShoppingCartServiceTest {
         BadRequestExceptionImp exceptionImp = assertThrows(
                 BadRequestExceptionImp.class,
                 () -> {
-                    shoppingCartService.editShoppingCart(1L);
+                    //shoppingCartService.closeShoppingCart(new CreditCardDTO(),1L);
                 }
         );
 
@@ -184,7 +185,7 @@ class ShoppingCartServiceTest {
         BadRequestExceptionImp exceptionImp = assertThrows(
                 BadRequestExceptionImp.class,
                 () -> {
-                    shoppingCartService.editShoppingCart(1L);
+                    //shoppingCartService.closeShoppingCart(new CreditCardDTO(),1L);
                 }
         );
 
@@ -205,7 +206,7 @@ class ShoppingCartServiceTest {
         BadRequestExceptionImp exceptionImp = assertThrows(
                 BadRequestExceptionImp.class,
                 () -> {
-                    shoppingCartService.editShoppingCart(1L);
+                    //shoppingCartService.closeShoppingCart(new CreditCardDTO(),1L);
                 }
         );
 
@@ -227,7 +228,7 @@ class ShoppingCartServiceTest {
                 productService.findByProductId(ArgumentMatchers.anyString())
         ).thenReturn(ProductServiceMock.findProductById());
 
-        shoppingCartService.editShoppingCart(1L);
+        //shoppingCartService.closeShoppingCart(new CreditCardDTO(),1L);
 
         verify(purchaseOrderRepo).save(any());
     }

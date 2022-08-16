@@ -41,6 +41,7 @@ class ShoppingCartTest {
         List<ProductShoppingCart> psc = new ArrayList<>();
         ShoppingCart sc = new ShoppingCart(
                 1,
+                0,
                 new Buyer(),
                 psc
         );
